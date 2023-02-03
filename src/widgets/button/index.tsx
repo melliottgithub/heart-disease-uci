@@ -1,18 +1,21 @@
+import { ButtonHTMLAttributes } from "react";
 import './index.css';
 
-type ButtonVariantType = "primary" | "secondary"
+type ButtonVariantType = 'primary' | 'secondary' | 'icon';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant: ButtonVariantType;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant: ButtonVariantType;
 }
 
- export const Button = (props: ButtonProps) => {
-  
-  let variantStyle = `button-${props.variant}`
-  let variantLabelStyle = `button-label-${props.variant}`
+function Button(props: ButtonProps) {
+  const disabledStyle = props.disabled ? `-disabled` : '';
+  const variantStyle = `button-${props.variant}${disabledStyle}`;
+  const labelVariantStyle = `button-label-${props.variant}`;
   return (
-    <button className={`button font-size-small ${variantStyle} ${props.className || ''}`} {...props}>
-      <span className={`button-label font-size-small ${variantLabelStyle} `}>{props.children}</span>
+    <button className={`button font-size-small ${variantStyle} ${props.className || ''}`} type="button" onClick={props.onClick}>
+      <span className={`button-label font-size-small ${labelVariantStyle}`}>{props.children}</span>
     </button>
   );
-};
+}
+
+export default Button;

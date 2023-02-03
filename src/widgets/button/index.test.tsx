@@ -1,6 +1,5 @@
 // test button
-import React from "react";
-import { Button } from ".";
+import  Button  from ".";
 import { render, screen } from "@testing-library/react";
 
 test("renders button", () => {

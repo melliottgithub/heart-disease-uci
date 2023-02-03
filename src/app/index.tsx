@@ -4,6 +4,7 @@ import Form from "../components/form";
 
 const App: React.FC = () => {
   //usestate
+  
 
   return (
     <div className="flex-column m-auto max-width">
@@ -12,9 +13,10 @@ const App: React.FC = () => {
       </h1>
       <h3 className="flex-row justify-center">Medical Information</h3>
       <div className="flex-row justify-center">
-        <Form onFormSubmit={(age, gender, chestPain, bloodPressure) => {
+        <Form onFormSubmit={() => {
           // handle form submit
-
+            return console.log('form submitted');
+            
         }} />
       </div>
     </div>
